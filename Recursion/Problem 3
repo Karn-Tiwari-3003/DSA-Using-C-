@@ -1,0 +1,35 @@
+/*
+Given a number n, find sum of digits of n using recursion. You will get answer even when you use iteration but make sure to be honest and solve this using recursion.
+
+Input
+First line contains an integer T, no of test cases. Then follows T test cases. Each test case consists of n.
+
+Output
+Print t lines, each containing sum of digits of n.
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int sumOfDigits(int n){
+  if(n == 0)
+    return 0;
+  
+  int sum = n%10;
+  n = n/10;
+  
+  return sum + sumOfDigits(n);
+}
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    cout << sumOfDigits(n) << endl;
+  }
+  return 0;
+}
