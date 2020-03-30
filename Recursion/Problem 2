@@ -1,0 +1,44 @@
+/*
+PBMentor believes recursion is very very important concept, hence she wants you to practice recursion properly. Let us start practicing recursion with 
+a simple problem. You have to print a pattern using recursion. Given a input N the pattern looks like this N, ai, ai+1, ai+2,.....,N. 
+Where if ai>0 then ai+1= ai−5 else ai+1= ai+5. It will be a decreasing sequence from N till ai<=0 and then an increasing sequence till 
+N.
+
+Input format
+First line contains an integer T denoting number of test cases.For each of the next T lines, each line contains an integer N.
+
+Output format
+For each test case on a new line, print the required pattern.
+
+Constraints
+1 <= T <= 6
+0 <= N <= 2000
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printPattern(int n){
+  if(n <= 0){
+    cout << n << " ";
+    return;
+  }
+  cout << n << " ";
+  printPattern(n-5);
+  cout << n << " ";
+  return;
+}
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    printPattern(n);
+    cout << endl;
+  }
+  return 0;
+}
