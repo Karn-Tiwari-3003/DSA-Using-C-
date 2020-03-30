@@ -1,0 +1,35 @@
+/*
+Let's start with a simple problem.
+You are given a number N, and the task is to find the sum of all numbers from 1 to N. PrepBuddy knowns that using loops you can solve it, he asks you to solve it using recursion.
+
+Input format
+First line contains Test case variable T.Each of the next T lines contains an integer N.
+
+Output format
+For each test case print the sum of all numbers from 1 to N (inclusive).
+
+Constraints
+1 <= N <= 1000
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int sum(int n){
+  if(n == 0)
+    return 0;
+  return n + sum(n-1);
+}
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    cout << sum(n) << endl;
+  }
+  return 0;
+}
