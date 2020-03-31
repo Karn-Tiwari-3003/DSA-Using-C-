@@ -1,0 +1,53 @@
+/*
+Arnab is given n integers. Now he can choose a starting index ( i) and then move to (i+ k)th element and continue his journey hopping k
+elements each time. Each index has a value arr[i]. Arnab should add the values which he chooses to the index he moves to.
+He can stop moving to (i+k) at any time he wishes.
+Find the maximum possible value in the array after Arnub stops.
+
+Note: Minimum value that sum can have is zero, it should never become negative throughout the calculation.
+
+Input format
+First line contains integer t,no of testcase. For each test case :There are two integers n and knext line contains n integers
+
+Output format
+For each test case print the maximum sum
+
+Constraints:
+1 <= t <= 10
+2 <= k <= N <=10^4
+−10^4 <= A[i] <= 10^4
+
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    int ans = INT_MIN;
+    int arr[n];
+    for(int i = 0 ; i < n ; i++)
+      cin >> arr[i];
+      
+    for(int i = 0 ; i < n ; i++){
+      int curr_max = 0;
+      for(int j = i ; j < n ; j+=k){
+        curr_max += arr[j];
+        if(curr_max > ans)
+          ans = curr_max;
+      }
+
+      if(curr_max > ans)
+        ans = curr_max;
+    }
+    cout << ans << endl;
+  }
+  
+  return 0;
+}
