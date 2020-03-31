@@ -1,0 +1,66 @@
+/*
+PrepBuddy wants you to solve an interesting problem. You will discover an interesting technique while solving this problem.
+You are given an array of N integers in ascending order and a number N. You have to print indexes of two numbers in the array such that the sum equals to number 
+K. In case no such pair exists print no answer.
+
+Input format
+First-line contains integer T, denoting the number of test cases. 
+For each test case: First-line contains an integer N. Second line contains N space separated integers Ai.
+The third line contains an integer K. 
+
+Output format
+For each test case on a new line, print the two indexes (i, j). If there are multiple such pair (i, j), print max j value pair and if all 
+j′ s are equal print min i value pair. If no such pair exist print no answer.
+
+Constraints:
+1<=T<=10
+1<=N<=10^6
+0<=A[i]<=10^5
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool check(int a[],int n,int k)
+{
+  int l=0,r=n-1;
+  while(r>=l)
+  {
+    if(a[l]+a[r]<k)
+      l++;
+    else if(a[l]+a[r]>k)
+      r--;
+    else
+    {
+      cout<<l<<" "<<r<<endl;
+      return true;
+    }
+  }
+  return false;
+}
+
+int main()
+{
+  //write your code here
+  int t;
+  cin>>t;
+  while(t--)
+  {
+    int n,k;
+    bool x;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+      cin>>a[i];
+    }
+    cin>>k;
+    sort(a,a+n);
+    x=check(a,n,k);
+    if(x==false)
+      cout<<"no answer"<<endl;
+    
+  }
+  
+  return 0;
+}
