@@ -1,0 +1,50 @@
+/*
+A simple problem statement with no stories: Given an array of positive integer, find out all the elements that are greater than 
+or equal to all the elements to it's right side.
+
+Input format
+The first line contains an integer T, denoting the number of test cases.Then follows T test cases, and each test case consists of two lines.
+The first line contains N. Second-line contains N space-separated integers.
+
+Output format
+For each test case on a new line, print the list of positive integers satisfying the above given condition. Print from end element to start element.
+
+Constraints
+1<=T<=5
+1<=N<=10^6
+1<=A[i]<=10^6
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n;
+    cin >> n;
+    int arr[n];
+    for(int i = 0 ; i < n ; i++)
+      cin >> arr[i];
+      
+    vector<int> ans;
+    int max = arr[n-1];
+    ans.push_back(max);
+    
+    for(int i = n-2 ; i >= 0 ; i--){
+      if(arr[i] > max){
+        max = arr[i];
+        ans.push_back(max);
+      }
+    }
+    
+    for(int i = 0; i < ans.size() ; i++){
+      cout << ans[i] << " ";
+    }
+    cout << endl;
+  }
+  return 0;
+}
