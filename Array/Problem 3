@@ -1,0 +1,53 @@
+/*
+In a far distant world, there is a hero named Saitama and with just one punch he can paralyze his enemies for a certain period.
+Saitama is fighting Garou and is hitting him at certain points in time represented by a sorted array. After each punch, Garou is
+paralyzed for a certain duration of time represented by an integer. Your task is to find the total duration of time Garou will be in a 
+paralyzed state. 
+
+Input format
+First line contains test case T.T test cases follow,
+First line contains N representing the total number of time Saitama punch Garou and an integer k representing the paralyzes duration after each punch.
+Second line contains a sorted array representing the times at which Saitama punches Garou.
+
+Output format
+For each test case, print the total duration of time Garou will be in a paralyzed state.
+
+Constraints
+1<=T<=10
+1<=N<=10^6
+1<=A[i]<=10^5
+1<=k<=10^7
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  //write your code here
+  int t;
+  cin >> t;
+  while(t--){
+    int n, k;
+    cin >> n >> k;
+    int arr[n];
+    for(int i = 0 ; i < n ; i++)
+      cin >> arr[i];
+      
+    int ans = k;
+    int t = arr[0] + k;
+    for(int i = 1 ; i < n ; i++){
+      if(arr[i] >= t){
+        ans += k;
+        t = arr[i] + k;
+      }
+      else if(arr[i] < t){
+          int x = max(t,arr[i] + k);
+          ans += x - t;
+          t = x;
+      }
+    }
+    cout << ans << endl;
+  }
+  return 0;
+}
