@@ -1,0 +1,99 @@
+/*
+PrepBuddy has recently heard about something called Array Rotation and wants you to write a code for rotating an array. So what happens in array rotation is, 
+you are given an integer array A of size N and an integer K, you have to rotate the array in the right direction by K steps. The task is to print the rotated array.
+
+Input Format
+The first line contains an integer T denoting the number of test cases.Each test case consists of two lines.
+The first line contains N, number of elements in the array and K number of steps.The Second line contains N space-separated integers.
+
+Output Format
+For each test case on a new line, print the rotated array.
+
+Constraints
+1<=T<=20
+1<=N<=10^5
+0<=K<=10^6
+0<=A[i]<=10^6
+
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void printarray(int arr[],int n)
+{
+  for(int i=0;i<n;i++)
+  {
+    cout<<arr[i]<<" ";
+  }
+  cout<<endl;
+}
+
+void onerightshift(int arr[],int n)
+{
+  int temp=0;
+  temp=arr[n-1];
+  for(int i=n-1;i>=1;i--)
+  {
+    arr[i]=arr[i-1];
+  }
+  arr[0]=temp;
+}
+
+void rightshift(int arr[],int d,int n)
+{
+  for(int i=0;i<d;i++)
+  {
+    onerightshift(arr,n);
+  }
+}
+
+void oneleftshift(int arr[],int n)
+{
+  int temp;
+  temp=arr[0];
+  for(int i=1;i<n;i++)
+  {
+    arr[i]=arr[i-1];
+  }
+  arr[n-1]=temp;
+}
+
+void leftshift(int arr[],int d,int n)
+{
+  for(int i=0;i<d;i++)
+  {
+    oneleftshift(arr,n);
+  }
+}
+
+int main()
+{
+  //write your code here
+  int t;
+  cin>>t;
+  while(t--)
+  {
+    int m,n;
+    cin>>m>>n;
+    int a[m];
+    for(int i=0;i<m;i++)
+    {
+      cin>>a[i];
+    }
+    if(n>=0)
+    { n=n%m;
+      rightshift(a,n,m);
+      printarray(a,m);
+    }
+    else
+    {
+      n=-n;
+      n=n%m;
+      leftshift(a,-n,m);
+      printarray(a,m);
+    }
+  }
+  
+  return 0;
+}
