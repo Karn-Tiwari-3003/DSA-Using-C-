@@ -1,0 +1,36 @@
+/*
+Diwali is here. While everyone here is busy texting "Happy Diwali" wishes to everybody else, NinjaCoder has some other plans and wants 
+to earn some money this season.Now, the Apex court has allowed the sale of only green crackers this Diwali. Out of all green crackers, 
+"Chakri" is most popular. Because of the irregular supply of "Chakri", the price of "Chakri" is oscillating daily. NinjaCoder saw a 
+business opportunity in this. He/She got a price list for coming N days from an insider in the market union. Prices in the list are for 
+1 unit of a large packet of "Chakri". Each large packet contains 100 units of Chakri.Now, due to financial limitations, NinjaCoder can 
+transact only 1 large packet (100 units of "Chakri") in the market. You have to tell maximum profit possible, given that he/she can 
+transact atmost one time.
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int n;
+	cin >> n;
+	int arr[n];
+	for(int i = 0 ; i < n ; i++)
+	    cin >> arr[i];
+	    
+    int mini_index = 0;
+    int max_profit = 0;
+    int i = 1;
+    while(i < n){
+        if(arr[i] < arr[mini_index])
+            mini_index = i;
+        
+        if(max_profit < (arr[i] - arr[mini_index]))
+            max_profit = arr[i] - arr[mini_index];
+            
+        i++;
+    }
+    cout << max_profit << endl;
+	return 0;
+}
