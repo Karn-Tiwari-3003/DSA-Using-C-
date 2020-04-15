@@ -1,0 +1,25 @@
+/*
+Given an array of integers, print two integer values:
+First, the sum of all numbers which are even as well as whose index are even.
+Second, the sum of all numbers which are odd as well as whose index are odd.
+Print the two integers space separated. (Arrays is 0-indexed)
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    int even_sum = 0, odd_sum = 0;
+    for(int i = 0 ; i < n ; i++){
+        int x;
+        cin >> x;
+        if(x&1 && i&1)
+            odd_sum += x;
+        if(!(x&1) && !(i&1))
+            even_sum += x;
+    }
+    cout << even_sum << " " << odd_sum << endl;
+	return 0;
+}
