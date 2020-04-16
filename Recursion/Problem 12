@@ -1,0 +1,24 @@
+/*
+Given an array of length N and an integer x, you need to find all the indexes where x is present in the input array. Save all the indexes in an array (in increasing order).
+Do this recursively. Indexing in the array starts from 0.
+*/
+
+int allIndexes(int input[], int size, int x, int output[]) {
+    static int i=0,j=0;
+    if(size==0)
+        return 0;
+    if(input[0]==x)
+    {
+        output[j]=i;
+        i++;
+        j++;
+        return allIndexes(input+1,size-1,x,output) + 1;
+        
+    }
+    else
+    {
+        i++;
+        return allIndexes(input+1,size-1,x,output);
+    }
+
+}
